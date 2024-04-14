@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update all packages
+      apt:
+       update_cache: yes
+    - name: Install required packages
+      apt:
+        name: 
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          -  software-properties-common
+          - gnupg-agent
+        state: present
+    - name: Install docker
+      apt:
+        name: docker.io
+        state: present
+    - name: enable and start docker service
+      service:
+        name: docker
+        enabled: yes
+        state: started
+
