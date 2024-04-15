@@ -3,4 +3,4 @@ COPY website /var/www/html
 RUN rm /var/www/html/index.html
 EXPOSE 80
 WORKDIR /var/www/html
-CMD ["apache2-foreground"]
+CMD ["apachectl" "-D" "FOREGROUND"]
